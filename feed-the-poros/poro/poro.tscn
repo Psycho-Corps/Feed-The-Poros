@@ -9,9 +9,11 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_ry54j"]
 radius = 7.07107
 
-[node name="Poro" type="CharacterBody2D" node_paths=PackedStringArray("cooldown", "state_machine")]
+[node name="Poro" type="CharacterBody2D" node_paths=PackedStringArray("size_label", "cooldown", "state_machine") groups=["Poros"]]
+input_pickable = true
 motion_mode = 1
 script = ExtResource("1_gmj4k")
+size_label = NodePath("Size")
 cooldown = NodePath("Movement_Cooldown")
 state_machine = NodePath("State_Machine")
 
@@ -36,3 +38,17 @@ entity = NodePath("../..")
 [node name="Wander" type="Node" parent="State_Machine" node_paths=PackedStringArray("entity")]
 script = ExtResource("5_hexcf")
 entity = NodePath("../..")
+
+[node name="Size" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Size: "
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

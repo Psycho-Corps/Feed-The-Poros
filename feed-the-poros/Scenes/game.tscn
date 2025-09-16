@@ -1,15 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://snui4dp8ph3q"]
+[gd_scene load_steps=5 format=4 uid="uid://snui4dp8ph3q"]
 
 [ext_resource type="PackedScene" uid="uid://dp31ivy2kti2k" path="res://Scenes/grid.tscn" id="1_qxrlw"]
 [ext_resource type="Script" uid="uid://5rcka1sfvfpx" path="res://Scenes/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://b0r74qy544mp6" path="res://poro/poro.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://bsxgl6gadbcqc" path="res://player/player.tscn" id="4_3dryh"]
 
 [node name="Game" type="Node2D" node_paths=PackedStringArray("grid")]
 script = ExtResource("1_wrm1d")
 grid = NodePath("Grid")
 
 [node name="Grid" parent="." instance=ExtResource("1_qxrlw")]
-position = Vector2(600, 333)
+position = Vector2(586, 341)
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD+////AAAAAAAAAAD///7/AAAAAAAAAAD///3/AAAAAAAAAAAAAP3/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAD//wAAAAAAAAAAAAAAAP7/AAAAAAAAAAD+/wEAAAAAAAAAAAD+/wAAAAAAAAAAAAD+//3/AAAAAAAAAAD///z/AAAAAAAAAAD///v/AAAAAAAAAAAAAPr/AAAAAAAAAAD///n/AAAAAAAAAAD+//7/AAAAAAAAAAD9////AAAAAAAAAAAAAPz/AAAAAAAAAAAAAPv/AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAACAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAD//wMAAAAAAAAAAAABAAAAAAAAAAAAAAD///r/AAAAAAAAAAD+//v/AAAAAAAAAAD+//z/AAAAAAAAAAD9//3/AAAAAAAAAAACAP//AAAAAAAAAAD9//7/AAAAAAAAAAA=")
 
 [node name="Poro" parent="." instance=ExtResource("2_qxrlw")]
 position = Vector2(600, 333)
+
+[node name="Player" parent="." instance=ExtResource("4_3dryh")]
+position = Vector2(576, 324)
