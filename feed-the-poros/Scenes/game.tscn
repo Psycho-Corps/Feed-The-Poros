@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://b0r74qy544mp6" path="res://poro/poro.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://bsxgl6gadbcqc" path="res://player/player.tscn" id="4_3dryh"]
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("grid")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("player", "grid")]
 script = ExtResource("1_wrm1d")
+player = NodePath("Player")
 grid = NodePath("Grid")
 
 [node name="Grid" parent="." instance=ExtResource("1_qxrlw")]

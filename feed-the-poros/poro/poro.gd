@@ -23,7 +23,9 @@ func _physics_process(delta: float) -> void:
 		false:
 			state_machine.change_state("Idle")
 			
-
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("feed_poro"):
-		pass
+		if game.player.snack_counter.snacks >= 1:
+			game.player.snack_counter.snacks -= 1
+			size += 1
+			
