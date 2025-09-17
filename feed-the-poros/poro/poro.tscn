@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0r74qy544mp6"]
+
+[ext_resource type="Script" uid="uid://f3meh5tisluv" path="res://poro/poro.gd" id="1_gmj4k"]
+[ext_resource type="Texture2D" uid="uid://bw6w36pc667bb" path="res://poro/Poro.png" id="2_aabmr"]
+[ext_resource type="Script" uid="uid://dv2j72sgd3d3l" path="res://poro/state_machine/state_machine.gd" id="3_aabmr"]
+[ext_resource type="Script" uid="uid://d0dk08hx61tlc" path="res://poro/state_machine/states/idle.gd" id="4_2bb14"]
+[ext_resource type="Script" uid="uid://dacskh1fvi3cw" path="res://poro/state_machine/states/wander.gd" id="5_hexcf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ry54j"]
+radius = 7.07107
+
+[node name="Poro" type="CharacterBody2D" node_paths=PackedStringArray("size_label", "cooldown", "state_machine") groups=["Poros"]]
+input_pickable = true
+motion_mode = 1
+script = ExtResource("1_gmj4k")
+size_label = NodePath("Size")
+cooldown = NodePath("Movement_Cooldown")
+state_machine = NodePath("State_Machine")
+
+[node name="Movement_Cooldown" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ry54j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_aabmr")
+
+[node name="State_Machine" type="Node" parent="."]
+script = ExtResource("3_aabmr")
+
+[node name="Idle" type="Node" parent="State_Machine" node_paths=PackedStringArray("entity")]
+script = ExtResource("4_2bb14")
+entity = NodePath("../..")
+
+[node name="Wander" type="Node" parent="State_Machine" node_paths=PackedStringArray("entity")]
+script = ExtResource("5_hexcf")
+entity = NodePath("../..")
+
+[node name="Size" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -31.0
+offset_right = 20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+text = "Size: "
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

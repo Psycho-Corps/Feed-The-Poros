@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsxgl6gadbcqc"]
+
+[ext_resource type="Script" uid="uid://deq1wsw8h8d4o" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://dgtrnbmwv0suu" path="res://Art/poro_snax.png" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://cwy80ucbdwgp0" path="res://player/snack_counter.gd" id="3_g1dw6"]
+
+[node name="Player" type="Node2D" node_paths=PackedStringArray("snack_counter")]
+script = ExtResource("1_rkbax")
+snack_counter = NodePath("Camera2D/MarginContainer/HBoxContainer/SnackCounter")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="Camera2D"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 238.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = -140.0
+grow_horizontal = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera2D/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="Camera2D/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_v0iea")
+
+[node name="SnackCounter" type="Label" parent="Camera2D/MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("3_g1dw6")
